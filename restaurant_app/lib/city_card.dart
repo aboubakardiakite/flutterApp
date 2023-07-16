@@ -1,37 +1,43 @@
 import 'package:flutter/material.dart';
 
 class CityCard extends StatelessWidget {
-  const CityCard({super.key});
+  final String name;
+  final String image;
+  final bool? checked;
+  final VoidCallback updateChecked;
+
+  CityCard({required this.name, required this.image, this.checked,required this.updateChecked});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      child: Container(
+      child: SizedBox(
         height: 150.0,
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
             Ink.image(
               fit: BoxFit.cover,
-              image: AssetImage('asserts/images/paris.jpeg'),
+              image: AssetImage(image),
               child: InkWell(
                 onTap: (){
-                  print("tap2");
+                  updateChecked();
                 },
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10.0),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
-                  Expanded(
+                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
+
                       children: <Widget>[
                         Icon(
-                          Icons.star_border,
+                          (checked == true ? Icons.star : Icons.star_border),
                           size: 40,
                           color: Colors.white,
                         )
@@ -40,7 +46,9 @@ class CityCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text('Paris', style: TextStyle(
+                      Text(
+                        name,
+                        style: const TextStyle(
                         color: Colors.white,
                         fontSize: 30,
                       ),

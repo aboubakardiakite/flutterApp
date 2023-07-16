@@ -8,6 +8,8 @@ void main(){
 }
 
 class DymaTrip extends StatelessWidget{
+  const DymaTrip({super.key});
+
 
   @override
   Widget build(BuildContext context){
