@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/city_card.dart';
+import 'package:restaurant_app/views/home/widgets/city_card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
