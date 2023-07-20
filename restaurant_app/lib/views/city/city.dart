@@ -29,11 +29,16 @@ class _CityState extends State<City> {
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
-        child: ListView.builder(
+        child: ListView.separated(
           itemBuilder: (context,index){
             return ActivityCard(activity: widget.activities[index]);
           },
           itemCount: widget.activities.length,
+          separatorBuilder: (context,index){
+            return SizedBox(
+              height: 5,
+            );
+          },
         ),
       ),
     );
