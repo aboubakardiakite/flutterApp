@@ -29,10 +29,11 @@ class _CityState extends State<City> {
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
-        child: ListView(
-          children: widget.activities.map((activity){
-             return ActivityCard(activity: activity);
-          }).toList(),
+        child: ListView.builder(
+          itemBuilder: (context,index){
+            return ActivityCard(activity: widget.activities[index]);
+          },
+          itemCount: widget.activities.length,
         ),
       ),
     );
