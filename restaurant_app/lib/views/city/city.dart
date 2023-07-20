@@ -28,17 +28,13 @@ class _CityState extends State<City> {
         ],
       ),
       body: Container(
-        padding: const EdgeInsets.all(10.0),
-        child: ListView.separated(
+        //padding: const EdgeInsets.all(10.0),
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (context,index){
             return ActivityCard(activity: widget.activities[index]);
           },
           itemCount: widget.activities.length,
-          separatorBuilder: (context,index){
-            return SizedBox(
-              height: 5,
-            );
-          },
         ),
       ),
     );
