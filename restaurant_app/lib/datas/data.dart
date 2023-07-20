@@ -20,11 +20,11 @@ List<Activity> activities = [
       city: 'Paris',
       image: 'asserts/images/activities/paris/eiffel.jpg',
       id: 'a3'
-  ),/*
+  ),
   Activity(
       name: 'Champs elysees',
       city: 'Paris',
-      image: 'asserts/images/activities/paris/elysees.jpg',
+      image: 'asserts/images/activities/paris/elysees.jpeg',
       id: 'a4'
   ),
   Activity(
@@ -38,5 +38,5 @@ List<Activity> activities = [
       city: 'Paris',
       image: 'asserts/images/activities/paris/parc-asterix.jpg',
       id: 'a6'
-  ),*/
+  ),
 ];

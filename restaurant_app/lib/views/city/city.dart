@@ -26,11 +26,10 @@ class _CityState extends State<City> {
         actions: const [
           Icon(Icons.more_vert)
         ],
-
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
-        child: Column(
+        child: ListView(
           children: widget.activities.map((activity){
              return ActivityCard(activity: activity);
           }).toList(),
