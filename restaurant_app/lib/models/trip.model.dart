@@ -3,7 +3,7 @@
 class Trip {
   String city;
   List<String> activities;
-  //DateTime dateTime;
+  DateTime dateTime;
 
-  Trip({required this.city, required this.activities});
+  Trip({required this.dateTime,required this.city, required this.activities});
 }
