@@ -4,6 +4,7 @@ import 'package:restaurant_app/views/city/widget/activity_card.dart';
 import '../../models/activity.model.dart';
 
 import '../../datas/data.dart' as data;
+import '../../models/trip.model.dart';
 
 
 class City extends StatefulWidget {
@@ -16,6 +17,7 @@ class City extends StatefulWidget {
 
 class _CityState extends State<City> {
 
+   Trip myTrip = Trip(city: 'Paris', activities: []);
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +31,30 @@ class _CityState extends State<City> {
       ),
       body: Container(
         //padding: const EdgeInsets.all(10.0),
-        child: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          children: widget.activities.map((activity) => ActivityCard(activity: activity)
-          ).toList()
-        ),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              height: 200,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(child: Text('Choisissez une date')),
+                      ElevatedButton(onPressed: (){}, child: Text('Selectionner une date'))
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Expanded(child: GridView.count(
+                crossAxisCount: 2,
+                children: widget.activities.map((activity) => ActivityCard(activity: activity)
+                ).toList()
+            ),)
+          ],
+        )
       ),
     );
   }
