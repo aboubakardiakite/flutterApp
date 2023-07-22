@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:restaurant_app/views/city/widget/activity_card.dart';
+import 'package:restaurant_app/views/city/widget/trip_overview.dart';
 
 import '../../models/activity.model.dart';
 
@@ -31,12 +31,16 @@ class _CityState extends State<City> {
       });
    }
 
+   double get amount {
+     return 0;
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.chevron_left),
-        title: const Text('Paris'),
+        title: const Text('Organiser notre voyage'),
         actions: const [
           Icon(Icons.more_vert)
         ],
@@ -45,21 +49,7 @@ class _CityState extends State<City> {
         //padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 200,
-              color: Colors.white,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(child: Text(DateFormat("d/M/y").format(myTrip.dateTime))),
-                      ElevatedButton(onPressed: setDate, child: Text('Selectionner une date'))
-                    ],
-                  )
-                ],
-              ),
-            ),
+            TripOverview(myTrip: myTrip, setDate: setDate, amount: amount),
             Expanded(child: GridView.count(
                 crossAxisCount: 2,
                 children: widget.activities.map((activity) => ActivityCard(activity: activity)
