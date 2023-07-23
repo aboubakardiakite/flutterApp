@@ -57,6 +57,12 @@ class _CityState extends State<City> {
      });
    }
 
+   void toggleActivity(String id){
+    setState(() {
+      myTrip.activities.contains(id) ? myTrip.activities.remove(id) : myTrip.activities.add(id);
+      print(myTrip.activities);
+    });
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +81,7 @@ class _CityState extends State<City> {
           children: [
             TripOverview(myTrip: myTrip, setDate: setDate, amount: amount),
             Expanded(
-                child: index == 0 ? ActivityList(activities: widget.activities,) :  TripActivityList()
+                child: index == 0 ? ActivityList(activities: widget.activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList()
               ),
           ],
         )
