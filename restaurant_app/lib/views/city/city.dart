@@ -14,31 +14,26 @@ class City extends StatefulWidget {
 
   final List<Activity> activities = data.activities;
 
-  City(){
-    print('constructor widget');
-  }
 
   @override
   _CityState createState(){
-    print('createState');
     return _CityState();
   }
 }
 
 class _CityState extends State<City> {
 
-   Trip myTrip = Trip(dateTime: DateTime.now(),city: 'Paris', activities: []);
-   int index = 0;
+   late Trip myTrip;
+    late int index;
 
-   _CityState(){
-     print('constructor state');
-   }
+
 
   @override
   void initState() {
      print('init state');
     super.initState();
-
+     myTrip = Trip(dateTime: DateTime.now(),city: 'Paris', activities: []);
+     index = 0;
   }
 
    void setDate(){
@@ -61,16 +56,7 @@ class _CityState extends State<City> {
        index = newIndex;
      });
    }
-   @override
-  void didUpdateWidget(covariant City oldWidget) {
-  print('didUpdateWidget');
-    super.didUpdateWidget(oldWidget);
-  }
-  @override
-  void dispose() {
-    print('dispose');
-    super.dispose();
-  }
+
 
   @override
   Widget build(BuildContext context) {
