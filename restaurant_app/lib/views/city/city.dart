@@ -14,14 +14,32 @@ class City extends StatefulWidget {
 
   final List<Activity> activities = data.activities;
 
+  City(){
+    print('constructor widget');
+  }
+
   @override
-  _CityState createState() => _CityState();
+  _CityState createState(){
+    print('createState');
+    return _CityState();
+  }
 }
 
 class _CityState extends State<City> {
 
    Trip myTrip = Trip(dateTime: DateTime.now(),city: 'Paris', activities: []);
    int index = 0;
+
+   _CityState(){
+     print('constructor state');
+   }
+
+  @override
+  void initState() {
+     print('init state');
+    super.initState();
+
+  }
 
    void setDate(){
       showDatePicker(context: context, initialDate: DateTime.now().add(const Duration(days: 1)) , firstDate: DateTime.now(), lastDate: DateTime(2024))
@@ -43,9 +61,20 @@ class _CityState extends State<City> {
        index = newIndex;
      });
    }
+   @override
+  void didUpdateWidget(covariant City oldWidget) {
+  print('didUpdateWidget');
+    super.didUpdateWidget(oldWidget);
+  }
+  @override
+  void dispose() {
+    print('dispose');
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+     print('build');
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.chevron_left),
