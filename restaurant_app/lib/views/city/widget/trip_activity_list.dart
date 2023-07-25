@@ -6,10 +6,10 @@ import 'activity_card.dart';
 class TripActivityList extends StatelessWidget {
 
   List<Activity> activities;
-  final Function toggleActivity;
+  final Function deleteTripActivity;
 
 
-  TripActivityList({super.key, required this.activities,required this.toggleActivity});
+  TripActivityList({super.key, required this.activities,required this.deleteTripActivity});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,13 @@ class TripActivityList extends StatelessWidget {
               backgroundImage: AssetImage(activity.image),
             ),
             title: Text(activity.name),
-            trailing: const Icon(Icons.delete),
-            onTap: (){
-              toggleActivity(activity);
-            },
+            trailing:  IconButton(
+                            icon: Icon(Icons.delete),
+                            color: Colors.red,
+                            onPressed: (){
+                              deleteTripActivity(activity.id);
+                            }
+            ),
           ),
         );
       },

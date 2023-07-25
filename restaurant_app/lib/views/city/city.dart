@@ -67,10 +67,10 @@ class _CityState extends State<City> {
       print(myTrip.activities);
     });
    }
-   void toggleMyActivity(Activity activity){
+   void deleteTripActivity(String id){
      setState(() {
-       if(tripActivities.contains(activity)) tripActivities.remove(activity);
-       print(tripActivities);
+       myTrip.activities.remove(id);
+       print(myTrip.activities);
      });
    }
 
@@ -91,7 +91,7 @@ class _CityState extends State<City> {
           children: [
             TripOverview(myTrip: myTrip, setDate: setDate, amount: amount),
             Expanded(
-                child: index == 0 ? ActivityList(activities: widget.activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,toggleActivity: toggleMyActivity)
+                child: index == 0 ? ActivityList(activities: widget.activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
               ),
           ],
         )
