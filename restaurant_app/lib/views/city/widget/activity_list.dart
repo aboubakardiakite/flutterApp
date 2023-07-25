@@ -16,13 +16,16 @@ class ActivityList extends StatelessWidget {
     return GridView.count(
         crossAxisCount: 2,
         children: activities.map(
-                (activity) => ActivityCard(
-                        activity: activity,
-                        isSelected: selectedActivities.contains(activity.id),
-                        toggleActivity: (){
-                          toggleActivity(activity.id);
-                        }
-                  )
+                (activity) {
+                  print(activity.name);
+                  return ActivityCard(
+                      activity: activity,
+                      isSelected: selectedActivities.contains(activity.id),
+                      toggleActivity: () {
+                        toggleActivity(activity.id);
+                      }
+                  );
+                }
               ).toList());
   }
 }

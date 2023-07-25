@@ -24,9 +24,13 @@ class City extends StatefulWidget {
 class _CityState extends State<City> {
 
    late Trip myTrip;
-    late int index;
+   late int index;
 
 
+   List<Activity> get tripActivities {
+     return widget.activities.where((activity) => myTrip.activities.contains(activity.id)
+   ).toList();
+}
 
   @override
   void initState() {
@@ -63,6 +67,12 @@ class _CityState extends State<City> {
       print(myTrip.activities);
     });
    }
+   void toggleMyActivity(Activity activity){
+     setState(() {
+       if(tripActivities.contains(activity)) tripActivities.remove(activity);
+       print(tripActivities);
+     });
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +91,7 @@ class _CityState extends State<City> {
           children: [
             TripOverview(myTrip: myTrip, setDate: setDate, amount: amount),
             Expanded(
-                child: index == 0 ? ActivityList(activities: widget.activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList()
+                child: index == 0 ? ActivityList(activities: widget.activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,toggleActivity: toggleMyActivity)
               ),
           ],
         )
