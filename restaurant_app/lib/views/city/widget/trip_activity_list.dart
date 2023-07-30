@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/views/city/widget/trip_activity_card.dart';
 
 import '../../../models/activity.model.dart';
-import 'activity_card.dart';
 
 class TripActivityList extends StatelessWidget {
 
@@ -16,21 +16,7 @@ class TripActivityList extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         var activity = activities[index];
-        return Card(
-          child: ListTile(
-            leading: CircleAvatar(
-              backgroundImage: AssetImage(activity.image),
-            ),
-            title: Text(activity.name),
-            trailing:  IconButton(
-                            icon: Icon(Icons.delete),
-                            color: Colors.red,
-                            onPressed: (){
-                              deleteTripActivity(activity.id);
-                            }
-            ),
-          ),
-        );
+        return TripActivityCard(activity: activity,deleteTripActivity: deleteTripActivity);
       },
       itemCount: activities.length,
     );

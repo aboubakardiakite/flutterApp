@@ -64,13 +64,11 @@ class _CityState extends State<City> {
    void toggleActivity(String id){
     setState(() {
       myTrip.activities.contains(id) ? myTrip.activities.remove(id) : myTrip.activities.add(id);
-      print(myTrip.activities);
     });
    }
    void deleteTripActivity(String id){
      setState(() {
        myTrip.activities.remove(id);
-       print(myTrip.activities);
      });
    }
 

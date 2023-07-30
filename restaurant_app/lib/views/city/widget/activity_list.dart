@@ -17,7 +17,6 @@ class ActivityList extends StatelessWidget {
         crossAxisCount: 2,
         children: activities.map(
                 (activity) {
-                  print(activity.name);
                   return ActivityCard(
                       activity: activity,
                       isSelected: selectedActivities.contains(activity.id),
