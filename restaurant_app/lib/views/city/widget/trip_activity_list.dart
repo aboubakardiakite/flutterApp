@@ -13,12 +13,13 @@ class TripActivityList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        var activity = activities[index];
-        return TripActivityCard(activity: activity,deleteTripActivity: deleteTripActivity);
-      },
-      itemCount: activities.length,
+    return Container(
+      child: ListView(
+      children: activities.map((activity) => TripActivityCard(
+                          key: ValueKey(activity.id),
+                          activity: activity,
+                          deleteTripActivity: deleteTripActivity)
+      ).toList())
     );
   }
 }

@@ -8,11 +8,11 @@ import '../../models/activity.model.dart';
 
 import '../../datas/data.dart' as data;
 import '../../models/trip.model.dart';
+import '../../widgets/data.dart';
 
 
 class City extends StatefulWidget {
 
-  final List<Activity> activities = data.activities;
 
 
   @override
@@ -25,12 +25,20 @@ class _CityState extends State<City> {
 
    late Trip myTrip;
    late int index;
+   late List<Activity> activities;
 
 
    List<Activity> get tripActivities {
-     return widget.activities.where((activity) => myTrip.activities.contains(activity.id)
+     return activities.where((activity) => myTrip.activities.contains(activity.id)
    ).toList();
 }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    activities = Data.of(context).activities;
+  }
 
   @override
   void initState() {
@@ -89,7 +97,7 @@ class _CityState extends State<City> {
           children: [
             TripOverview(myTrip: myTrip, setDate: setDate, amount: amount),
             Expanded(
-                child: index == 0 ? ActivityList(activities: widget.activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
+                child: index == 0 ? ActivityList(activities: activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
               ),
           ],
         )

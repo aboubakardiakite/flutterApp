@@ -13,7 +13,7 @@ class TripActivityCard extends StatefulWidget {
     return colors[Random().nextInt(2)];
   }
 
-  const TripActivityCard({super.key, required this.activity, required this.deleteTripActivity});
+  const TripActivityCard({required Key key, required this.activity, required this.deleteTripActivity}):super(key: key);
 
 
   @override
