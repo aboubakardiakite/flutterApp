@@ -11,8 +11,19 @@ import '../../widgets/data.dart';
 
 class City extends StatefulWidget {
 
-  showContext(BuildContext context){
-    print(context);
+  showContext({required BuildContext context, required List<Widget> children}){
+    var orientation = MediaQuery.of(context).orientation;
+    if(orientation == Orientation.portrait) {
+      return Column(
+        children: children,
+      );
+    }else{
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: children,
+
+      );
+    }
   }
   @override
   _CityState createState(){
@@ -89,14 +100,12 @@ class _CityState extends State<City> {
       ),
       body: Container(
         //padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            TripOverview(myTrip: myTrip, setDate: setDate, amount: amount),
-            Expanded(
-                child: index == 0 ? ActivityList(activities: activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
-              ),
-          ],
-        )
+        child:  widget.showContext(context: context, children: <Widget>[
+          TripOverview(myTrip: myTrip, setDate: setDate, amount: amount),
+          Expanded(
+              child: index == 0 ? ActivityList(activities: activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
+          ),
+        ],)
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
