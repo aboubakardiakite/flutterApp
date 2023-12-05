@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/city/widget/activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_overview.dart';
@@ -10,6 +11,7 @@ import '../../widgets/data.dart';
 
 
 class CityView extends StatefulWidget {
+
   const CityView({super.key});
 
 
