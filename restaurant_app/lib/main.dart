@@ -26,7 +26,11 @@ class DymaTrip extends StatelessWidget{
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      // initialRoute: '/city',
+      routes: {
+        '/': (context) => const HomeView(),
+        '/city': (context) => Data(child: const CityView() ,),
+      }
       // home: Data(child:CityView() ,) ,
     );
   }

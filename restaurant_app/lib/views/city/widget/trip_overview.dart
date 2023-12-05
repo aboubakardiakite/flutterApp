@@ -8,8 +8,9 @@ class TripOverview extends StatelessWidget {
   final Trip myTrip;
   final VoidCallback setDate;
   double amount;
+  final String cityname;
 
-  TripOverview({super.key,required this.myTrip, required this.setDate,required this.amount});
+  TripOverview({super.key,required this.myTrip, required this.setDate,required this.amount,required this.cityname});
 
 
   @override
@@ -25,9 +26,9 @@ class TripOverview extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Paris',
-            style: TextStyle(fontSize: 25, decoration: TextDecoration.underline),
+           Text(
+            '$cityname',
+            style: const TextStyle(fontSize: 25, decoration: TextDecoration.underline),
           ),
           const SizedBox(height: 30,),
           Row(

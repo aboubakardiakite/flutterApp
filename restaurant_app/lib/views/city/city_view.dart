@@ -107,9 +107,15 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    final CityModel city = ModalRoute.of(context)!.settings.arguments as CityModel;
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.chevron_left),
+        leading: IconButton(
+            onPressed: (){
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(Icons.chevron_left)
+        ),
         title: const Text('Organiser notre voyage'),
         actions: const [
           Icon(Icons.more_vert)
@@ -118,7 +124,7 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
       body: Container(
         //padding: const EdgeInsets.all(10.0),
         child:  widget.showContext(context: context, children: <Widget>[
-          TripOverview(myTrip: myTrip, setDate: setDate, amount: amount),
+          TripOverview(myTrip: myTrip, setDate: setDate, amount: amount, cityname: city.name),
           Expanded(
               child: index == 0 ? ActivityList(activities: activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
           ),
