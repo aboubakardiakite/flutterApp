@@ -31,7 +31,7 @@ class City extends StatefulWidget {
   }
 }
 
-class _CityState extends State<City> {
+class _CityState extends State<City> with WidgetsBindingObserver {
 
    late Trip myTrip;
    late int index;
@@ -44,6 +44,12 @@ class _CityState extends State<City> {
 }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print(state);
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     activities = Data.of(context).activities;
@@ -52,8 +58,15 @@ class _CityState extends State<City> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance!.addObserver(this);
      myTrip = Trip(dateTime: DateTime.now(),city: 'Paris', activities: []);
      index = 0;
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
   }
 
    void setDate(){
