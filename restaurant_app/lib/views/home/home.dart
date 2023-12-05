@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/home/widgets/city_card.dart';
+import 'package:restaurant_app/widgets/modal.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -42,10 +43,19 @@ class _HomeViewState extends State<HomeView> {
               return CityCard(
                 city: city
               );
-            })
+            }),
+            ElevatedButton(onPressed: (){
+              openModal(context);
+            }, child: Text('Modal')),
           ],
         ),
       ),
     );
   }
+
+  openModal(context) {
+    askModal(context, "Voulez-vous continuer ?").then((value) => print(value));
+  }
+
+
 }
