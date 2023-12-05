@@ -87,7 +87,7 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
    }
 
    double get amount {
-     return 0;
+     return myTrip.activities.fold(0.0, (previousValue, element) => previousValue + activities.firstWhere((activity) => activity.id == element).price);
    }
 
    void switchIndex(newIndex){
