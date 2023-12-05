@@ -144,7 +144,6 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
       if(result == 'sauvegarder'){
         Navigator.pushNamed(context, HomeView.routeName, arguments: myTrip);
       }
-
    }
 
   @override

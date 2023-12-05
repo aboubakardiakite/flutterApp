@@ -46,6 +46,20 @@ class _TripActivityCardState extends State<TripActivityCard> {
             color: Colors.red,
             onPressed: (){
               widget.deleteTripActivity(widget.activity.id);
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Activité supprimée'),
+                    duration: const Duration(seconds: 3),
+                    backgroundColor: Colors.red,
+                    action: SnackBarAction(
+                      label: 'Annuler',
+                      textColor: Colors.white,
+                      onPressed: (){
+
+                      },
+                    ),
+                  )
+              );
             }
         ),
       ),
