@@ -6,6 +6,8 @@ import 'package:restaurant_app/views/home/widgets/city_card.dart';
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  static const routeName = '/';
+
 
   @override
   _HomeViewState createState() {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/models/city_model.dart';
 
+import '../../city/city_view.dart';
+
 
 class CityCard extends StatelessWidget {
   final CityModel city;
@@ -22,7 +24,7 @@ class CityCard extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(
                     context,
-                    '/city',
+                    CityView.routeName,
                     arguments: city,
                   );
                 },

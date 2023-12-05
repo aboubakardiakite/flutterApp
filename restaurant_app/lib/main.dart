@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/city/city_view.dart';
+import 'package:restaurant_app/views/error/not_found.dart';
 import 'package:restaurant_app/views/home/home.dart';
 import 'package:restaurant_app/widgets/data.dart';
 
@@ -29,13 +30,16 @@ class DymaTrip extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       // initialRoute: '/city',
       routes: {
-        '/': (context) => const HomeView(),
+        HomeView.routeName: (context) => const HomeView(),
       },
       onGenerateRoute: (settings){
-        if(settings.name == '/city'){
+        if(settings.name == CityView.routeName){
           final CityModel city = settings.arguments as CityModel;
           return MaterialPageRoute(builder: (context) => Data(child: CityView(city: city) ,));
         }
+      },
+      onUnknownRoute: (settings){
+        return MaterialPageRoute(builder: (context) => NotFound());
       },
       // home: Data(child:CityView() ,) ,
     );
