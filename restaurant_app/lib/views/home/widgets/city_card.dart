@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/models/city_model.dart';
+import 'package:restaurant_app/views/city/city_view.dart';
 
 class CityCard extends StatelessWidget {
-  final String name;
-  final String image;
-  final bool? checked;
-  final VoidCallback updateChecked;
-
-  CityCard({required this.name, required this.image, this.checked,required this.updateChecked});
+  final CityModel city;
+  const CityCard({required this.city});
 
   @override
   Widget build(BuildContext context) {
@@ -19,44 +17,27 @@ class CityCard extends StatelessWidget {
           children: <Widget>[
             Ink.image(
               fit: BoxFit.cover,
-              image: AssetImage(image),
+              image: AssetImage(city.image),
               child: InkWell(
-                onTap: (){
-                  updateChecked();
+                onTap: () {
                 },
               ),
             ),
-             Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: [
-                   Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: <Widget>[
-                        Icon(
-                          (checked == true ? Icons.star : Icons.star_border),
-                          size: 40,
-                          color: Colors.white,
-                        )
-                      ],
+            Positioned(
+                top: 10,
+                left: 10,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                  color: Colors.black54,
+                  child:  Text(
+                    city.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35,
+                      color: Colors.white,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        name,
-                        style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                      ),
-                      )
-                    ],
-                  )
-                ],
-              ),
+                )
             )
           ],
         ),

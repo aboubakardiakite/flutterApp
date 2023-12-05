@@ -1,5 +1,5 @@
 
-import '../models/activity.model.dart';
+import '../models/activity_model.dart';
 
 List<Activity> activities = [
   Activity(

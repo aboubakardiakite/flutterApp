@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/models/activity.model.dart';
+import 'package:restaurant_app/models/activity_model.dart';
 
 class ActivityCard extends StatelessWidget {
 

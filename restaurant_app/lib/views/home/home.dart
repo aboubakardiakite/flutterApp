@@ -1,32 +1,27 @@
 
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/home/widgets/city_card.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
 
   @override
-  _HomeState createState() {
-    return _HomeState();
+  _HomeViewState createState() {
+    return _HomeViewState();
   }
 
 }
 
 
-class _HomeState extends State<Home> {
+class _HomeViewState extends State<HomeView> {
   List cities = [
-    {'name': 'Paris' , 'image':'asserts/images/paris.jpeg' , 'checked': false},
-    {'name': 'Lyon' , 'image':'asserts/images/lyon.jpg','checked': false},
-    {'name': 'Lille' , 'image':'asserts/images/lille.jpeg','checked':false },
+    CityModel(image: 'asserts/images/paris.jpeg', name: 'Paris' ),
+    CityModel(image: 'asserts/images/lyon.jpg', name: 'Lyon' ),
+    CityModel(image: 'asserts/images/lille.jpeg', name: 'Lille' ),
   ];
 
-  void switchChecked(city){
-    int index = cities.indexOf(city);
-    setState(() {
-      cities[index]['checked'] = !cities[index]['checked'];
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +38,8 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             ...cities.map((city){
               return CityCard(
-                name: city['name'],
-                image: city['image'],
-                checked: city['checked'],
-                updateChecked: (){
-                switchChecked(city);
-              },);
+                city: city
+              );
             })
           ],
         ),

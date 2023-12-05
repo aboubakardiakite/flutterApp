@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/views/city/city.dart';
+import 'package:restaurant_app/views/city/city_view.dart';
 import 'package:restaurant_app/views/home/home.dart';
 import 'package:restaurant_app/widgets/data.dart';
 
@@ -26,7 +26,8 @@ class DymaTrip extends StatelessWidget{
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: Data(child:City() ,) ,
+      // home: HomeView(),
+      home: Data(child:CityView() ,) ,
     );
   }
 

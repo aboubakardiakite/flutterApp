@@ -3,13 +3,15 @@ import 'package:restaurant_app/views/city/widget/activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_overview.dart';
 
-import '../../models/activity.model.dart';
+import '../../models/activity_model.dart';
 
-import '../../models/trip.model.dart';
+import '../../models/trip_model.dart';
 import '../../widgets/data.dart';
 
 
-class City extends StatefulWidget {
+class CityView extends StatefulWidget {
+  const CityView({super.key});
+
 
   showContext({required BuildContext context, required List<Widget> children}){
     var orientation = MediaQuery.of(context).orientation;
@@ -26,12 +28,12 @@ class City extends StatefulWidget {
     }
   }
   @override
-  _CityState createState(){
-    return _CityState();
+  _CityViewState createState(){
+    return _CityViewState();
   }
 }
 
-class _CityState extends State<City> with WidgetsBindingObserver {
+class _CityViewState extends State<CityView> with WidgetsBindingObserver {
 
    late Trip myTrip;
    late int index;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/views/city/widget/trip_activity_card.dart';
 
-import '../../../models/activity.model.dart';
+import '../../../models/activity_model.dart';
 
 class TripActivityList extends StatelessWidget {
 

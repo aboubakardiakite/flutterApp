@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../../models/activity.model.dart';
+import '../../../models/activity_model.dart';
 
 class TripActivityCard extends StatefulWidget {
   final Activity activity;
