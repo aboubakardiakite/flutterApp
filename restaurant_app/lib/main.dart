@@ -16,6 +16,15 @@ class DymaTrip extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return  MaterialApp(
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+        primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(color: Colors.green),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: Data(child:City() ,) ,
     );

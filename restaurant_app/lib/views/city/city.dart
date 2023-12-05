@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/views/city/widget/activity_card.dart';
 import 'package:restaurant_app/views/city/widget/activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_overview.dart';
 
 import '../../models/activity.model.dart';
 
-import '../../datas/data.dart' as data;
 import '../../models/trip.model.dart';
 import '../../widgets/data.dart';
 
 
 class City extends StatefulWidget {
 
-
-
+  showContext(BuildContext context){
+    print(context);
+  }
   @override
   _CityState createState(){
     return _CityState();
@@ -35,14 +34,12 @@ class _CityState extends State<City> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     activities = Data.of(context).activities;
   }
 
   @override
   void initState() {
-     print('init state');
     super.initState();
      myTrip = Trip(dateTime: DateTime.now(),city: 'Paris', activities: []);
      index = 0;
@@ -82,7 +79,6 @@ class _CityState extends State<City> {
 
   @override
   Widget build(BuildContext context) {
-     print('build');
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.chevron_left),
