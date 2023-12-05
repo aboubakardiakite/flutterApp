@@ -3,6 +3,7 @@ import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/city/widget/activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_overview.dart';
+import 'package:restaurant_app/views/home/home.dart';
 
 import '../../models/activity_model.dart';
 
@@ -107,6 +108,45 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
      });
    }
 
+   saveTrip()  async{
+     final result = await showDialog(context: context, builder: (context){
+       return SimpleDialog(
+           title: const Text('Voulez-vous sauvegarder ce voyage ?'),
+           contentPadding: const EdgeInsets.all(20.0),
+           children: [
+             Row(
+               mainAxisAlignment: MainAxisAlignment.end,
+               children: [
+                     ElevatedButton(
+                         onPressed: () {
+                            Navigator.pop(context, 'annuler');
+                         },
+                         style: ElevatedButton.styleFrom(
+                           primary: Colors.grey,
+                         ),
+                         child: const Text('annuler',style: TextStyle(color: Colors.black),)
+                     ),
+                      SizedBox.fromSize(size: const Size(10, 0),),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context, 'sauvegarder');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Theme.of(context).primaryColor,
+                          ),
+                          child: const Text('sauvegarder', style: TextStyle(color: Colors.white)),
+                      ),
+               ],
+             )
+           ]
+       );
+     });
+      if(result == 'sauvegarder'){
+        Navigator.pushNamed(context, HomeView.routeName, arguments: myTrip);
+      }
+
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,6 +171,10 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
           ),
         ],)
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){saveTrip();},
+        child: const Icon(Icons.forward),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
         items: const [
@@ -147,4 +191,5 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
       ),
     );
   }
+
 }
