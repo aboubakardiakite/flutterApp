@@ -11,8 +11,9 @@ import '../../widgets/data.dart';
 
 
 class CityView extends StatefulWidget {
+  final CityModel city;
+  const CityView({super.key, required this.city});
 
-  const CityView({super.key});
 
 
   showContext({required BuildContext context, required List<Widget> children}){
@@ -107,7 +108,6 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    final CityModel city = ModalRoute.of(context)!.settings.arguments as CityModel;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -124,7 +124,7 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
       body: Container(
         //padding: const EdgeInsets.all(10.0),
         child:  widget.showContext(context: context, children: <Widget>[
-          TripOverview(myTrip: myTrip, setDate: setDate, amount: amount, cityname: city.name),
+          TripOverview(myTrip: myTrip, setDate: setDate, amount: amount, cityname: widget.city.name),
           Expanded(
               child: index == 0 ? ActivityList(activities: activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
           ),
