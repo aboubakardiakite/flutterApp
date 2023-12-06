@@ -1,48 +1,53 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/city/city_view.dart';
 import 'package:restaurant_app/views/error/not_found.dart';
 import 'package:restaurant_app/views/home/home_view.dart';
+import 'package:restaurant_app/views/trips/trips_view.dart';
 import 'package:restaurant_app/widgets/data.dart';
 
-void main(){
+void main() {
   runApp(DymaTrip());
 }
 
-class DymaTrip extends StatelessWidget{
+class DymaTrip extends StatelessWidget {
   const DymaTrip({super.key});
 
-
   @override
-  Widget build(BuildContext context){
-    return  MaterialApp(
+  Widget build(BuildContext context) {
+    return MaterialApp(
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 20),
+          titleTextStyle: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(
-          bodyText1: TextStyle(color: Colors.black,fontSize: 20),
+          bodyText1: TextStyle(color: Colors.black, fontSize: 20),
         ),
       ),
       debugShowCheckedModeBanner: false,
-      // initialRoute: '/city',
       routes: {
         HomeView.routeName: (context) => const HomeView(),
       },
-      onGenerateRoute: (settings){
-        if(settings.name == CityView.routeName){
-          final CityModel city = settings.arguments as CityModel;
-          return MaterialPageRoute(builder: (context) => Data(child: CityView(city: city) ,));
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case CityView.routeName:
+            final CityModel city = settings.arguments as CityModel;
+            return MaterialPageRoute(
+                builder: (context) => Data(
+                      child: CityView(city: city),
+                    ));
+          case TripsView.routeName:
+            return MaterialPageRoute(builder: (context) => const TripsView());
+          default:
+            return MaterialPageRoute(builder: (context) => NotFound());
         }
       },
-      onUnknownRoute: (settings){
+      onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (context) => NotFound());
       },
       // home: Data(child:CityView() ,) ,
     );
   }
-
 }

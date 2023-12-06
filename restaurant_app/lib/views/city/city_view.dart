@@ -14,7 +14,7 @@ import '../../widgets/drawer_widget.dart';
 
 class CityView extends StatefulWidget {
   final CityModel city;
-  static const routeName = '/city';
+  static const String routeName = '/city';
   const CityView({super.key, required this.city});
 
 

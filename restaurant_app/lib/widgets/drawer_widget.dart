@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/views/trips/trips_view.dart';
 
 import '../views/home/home_view.dart';
 
@@ -37,9 +38,12 @@ class DrawerWidget extends StatelessWidget {
             },
           ),
           Divider(),
-          const ListTile(
+           ListTile(
             leading: Icon(Icons.flight),
             title: Text('Mes voyages'),
+            onTap: (){
+              Navigator.pushNamed(context, TripsView.routeName);
+            }
           ),
           Divider(),
           const ListTile(

@@ -9,7 +9,7 @@ import '../../widgets/drawer_widget.dart';
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
-  static const routeName = '/';
+  static const String routeName = '/';
 
 
   @override
