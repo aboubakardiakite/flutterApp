@@ -7,7 +7,8 @@ import 'package:restaurant_app/widgets/modal.dart';
 import '../../widgets/drawer_widget.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  final List<CityModel> cities;
+  const HomeView({super.key, required this.cities});
 
   static const String routeName = '/';
 
@@ -21,12 +22,6 @@ class HomeView extends StatefulWidget {
 
 
 class _HomeViewState extends State<HomeView> {
-  List cities = [
-    CityModel(image: 'asserts/images/paris.jpeg', name: 'Paris' ),
-    CityModel(image: 'asserts/images/lyon.jpg', name: 'Lyon' ),
-    CityModel(image: 'asserts/images/lille.jpeg', name: 'Lille' ),
-  ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
         child:  Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            ...cities.map((city){
+            ...widget.cities.map((city){
               return CityCard(
                 city: city
               );

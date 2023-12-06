@@ -15,8 +15,14 @@ import '../../widgets/drawer_widget.dart';
 class CityView extends StatefulWidget {
   final CityModel city;
   static const String routeName = '/city';
-  const CityView({super.key, required this.city});
+  final Function? onTripAdded;
+  final Function? onTripRemoved;
 
+  CityView({super.key, required this.city, this.onTripAdded, this.onTripRemoved});
+
+  List<Activity> get activities {
+    return city.activities;
+  }
 
 
   showContext({required BuildContext context, required List<Widget> children}){
@@ -43,11 +49,10 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
 
    late Trip myTrip;
    late int index;
-   late List<Activity> activities;
 
 
    List<Activity> get tripActivities {
-     return activities.where((activity) => myTrip.activities.contains(activity.id)
+     return widget.activities.where((activity) => myTrip.activities.contains(activity.id)
    ).toList();
 }
 
@@ -55,12 +60,6 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
     print(state);
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    activities = Data.of(context).activities;
   }
 
   @override
@@ -89,7 +88,7 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
    }
 
    double get amount {
-     return myTrip.activities.fold(0.0, (previousValue, element) => previousValue + activities.firstWhere((activity) => activity.id == element).price);
+     return myTrip.activities.fold(0.0, (previousValue, element) => previousValue + widget.activities.firstWhere((activity) => activity.id == element).price);
    }
 
    void switchIndex(newIndex){
@@ -143,6 +142,7 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
        );
      });
       if(result == 'sauvegarder'){
+        widget.onTripAdded!(myTrip);
         Navigator.pushNamed(context, HomeView.routeName, arguments: myTrip);
       }
    }
@@ -159,7 +159,7 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
         child:  widget.showContext(context: context, children: <Widget>[
           TripOverview(myTrip: myTrip, setDate: setDate, amount: amount, cityname: widget.city.name),
           Expanded(
-              child: index == 0 ? ActivityList(activities: activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
+              child: index == 0 ? ActivityList(activities: widget.activities,toggleActivity: toggleActivity, selectedActivities: myTrip.activities) :  TripActivityList(activities: tripActivities,deleteTripActivity: deleteTripActivity)
           ),
         ],)
       ),

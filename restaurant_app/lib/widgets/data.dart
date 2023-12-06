@@ -7,7 +7,7 @@ import '../models/activity_model.dart';
 
 class Data extends InheritedWidget {
 
-  final List<Activity> activities = data.activities;
+  final List<Activity> activities = data.activitiesParis;
 
 
   Data({ required Widget child}): super(child: child);
