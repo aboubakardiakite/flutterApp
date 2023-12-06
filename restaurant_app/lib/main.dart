@@ -62,7 +62,7 @@ class _MyTripState extends State<MyTrip> {
             return MaterialPageRoute(
                 builder: (context) => CityView(city: city,onTripAdded: addTrip,onTripRemoved: removeTrip));
           case TripsView.routeName:
-            return MaterialPageRoute(builder: (context) => const TripsView());
+            return MaterialPageRoute(builder: (context) => TripsView(trips: trips));
           default:
             return MaterialPageRoute(builder: (context) => NotFound());
         }

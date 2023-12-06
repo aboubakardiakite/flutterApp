@@ -1,10 +1,14 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/views/trips/widgets/trip_list.dart';
 import 'package:restaurant_app/widgets/drawer_widget.dart';
 
+import '../../models/trip_model.dart';
+
 class TripsView extends StatefulWidget {
-  const TripsView({super.key});
+  final List<Trip> trips;
+  const TripsView({super.key, required this.trips});
   static const String routeName = '/trips';
 
   @override
@@ -19,15 +23,7 @@ class _TripsViewState extends State<TripsView> {
         title: const Text('Mes voyages'),
       ),
       drawer: DrawerWidget(),
-      body: Container(
-        padding: const EdgeInsets.all(10.0),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text('Trips'),
-          ],
-        ),
-      ),
+      body: TripList(trips: widget.trips),
     );
 
   }
