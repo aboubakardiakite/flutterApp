@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/views/trips/widgets/trip_list.dart';
 import 'package:restaurant_app/widgets/drawer_widget.dart';
@@ -18,13 +16,32 @@ class TripsView extends StatefulWidget {
 class _TripsViewState extends State<TripsView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mes voyages'),
-      ),
-      drawer: DrawerWidget(),
-      body: TripList(trips: widget.trips),
-    );
-
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Mes voyages'),
+            bottom: const TabBar(
+              tabs: [
+                Tab(
+                  text: 'A venir',
+                ),
+                Tab(
+                  text: 'Passés',
+                ),
+              ],
+            ),
+          ),
+          drawer: DrawerWidget(),
+          body: TabBarView(
+            children: [
+              TripList(
+                trips: widget.trips.where((trip) => DateTime.now().isBefore(trip.dateTime)).toList(),
+              ),TripList(
+                trips: widget.trips.where((trip) => DateTime.now().isAfter(trip.dateTime)).toList(),
+              ),
+            ],
+          )
+        ));
   }
 }

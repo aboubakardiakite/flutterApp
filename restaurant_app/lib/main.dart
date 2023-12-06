@@ -24,7 +24,11 @@ class MyTrip extends StatefulWidget {
 
 
 class _MyTripState extends State<MyTrip> {
-  List<Trip> trips = [];
+  List<Trip> trips = [
+    Trip(city: "Paris", dateTime: DateTime.now().add(const Duration(days: 1)), activities: []),
+    Trip(city: "Lyon", dateTime: DateTime.now().add(const Duration(days: 2)), activities: []),
+    Trip(city: "Lille", dateTime: DateTime.now().subtract(const Duration(days: 1)), activities: []),
+  ];
 
   void addTrip(Trip trip) {
     setState(() {
