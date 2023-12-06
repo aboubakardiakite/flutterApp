@@ -4,6 +4,8 @@ import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/home/widgets/city_card.dart';
 import 'package:restaurant_app/widgets/modal.dart';
 
+import '../../widgets/drawer_widget.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -30,10 +32,9 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.home),
-        title: const Text('dymaTrip'),
-        actions: const <Widget>[Icon(Icons.more_vert)],
+        title: const Text('My Trips'),
       ),
+      drawer: DrawerWidget(),
       body: Container(
         padding: const EdgeInsets.all(10.0),
         child:  Column(

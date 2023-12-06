@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/city/city_view.dart';
 import 'package:restaurant_app/views/error/not_found.dart';
-import 'package:restaurant_app/views/home/home.dart';
+import 'package:restaurant_app/views/home/home_view.dart';
 import 'package:restaurant_app/widgets/data.dart';
 
 void main(){
@@ -20,11 +20,11 @@ class DymaTrip extends StatelessWidget{
     return  MaterialApp(
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+          titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 20),
         ),
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(
-          bodyText1: TextStyle(color: Colors.green),
+          bodyText1: TextStyle(color: Colors.black,fontSize: 20),
         ),
       ),
       debugShowCheckedModeBanner: false,

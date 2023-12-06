@@ -3,12 +3,13 @@ import 'package:restaurant_app/models/city_model.dart';
 import 'package:restaurant_app/views/city/widget/activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_activity_list.dart';
 import 'package:restaurant_app/views/city/widget/trip_overview.dart';
-import 'package:restaurant_app/views/home/home.dart';
+import 'package:restaurant_app/views/home/home_view.dart';
 
 import '../../models/activity_model.dart';
 
 import '../../models/trip_model.dart';
 import '../../widgets/data.dart';
+import '../../widgets/drawer_widget.dart';
 
 
 class CityView extends StatefulWidget {
@@ -150,17 +151,9 @@ class _CityViewState extends State<CityView> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: (){
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(Icons.chevron_left)
-        ),
         title: const Text('Organiser notre voyage'),
-        actions: const [
-          Icon(Icons.more_vert)
-        ],
       ),
+      drawer: DrawerWidget(),
       body: Container(
         //padding: const EdgeInsets.all(10.0),
         child:  widget.showContext(context: context, children: <Widget>[
